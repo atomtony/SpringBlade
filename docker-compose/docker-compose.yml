@@ -1,0 +1,21 @@
+version: '3'
+services:
+  nacos:
+    image: nacos/nacos-server:2.0.0
+    restart: on-failure
+    container_name: nacos
+    hostname: nacos
+    ports:
+      - 8848:8848
+      - 9848:9848
+      - 9849:9849
+    environment:
+      - "MODE=standalone"
+
+  redis:
+    image: redis:5.0.0
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data:/data
